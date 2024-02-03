@@ -453,6 +453,7 @@ ar:
       view: عرض كتلة النطاق
     email_domain_blocks:
       add_new: إضافة
+      allow_registrations_with_approval: السماح بالتسجيلات وإنشاء الحسابات بعد الموافقة
       attempts_over_week:
         few: "%{count} محاولات تسجيل في آخر أسبوع"
         many: "%{count} محاولات تسجيل في آخر أسبوع"
@@ -1116,6 +1117,8 @@ ar:
       clicking_this_link: اضغط على هذا الرابط
       login_link: تسجيل الدخول
       proceed_to_login_html: يمكنكَ الآن الاستمرار إلى %{login_link}.
+      registration_complete: اكتمل تسجيل حسابك على %{domain} الآن!
+      welcome_title: أهلاً بك، %{name}!
       wrong_email_hint: إذا كان عنوان البريد الإلكتروني هذا غير صحيح، يمكنك تغييره في إعدادات الحساب.
     delete_account: احذف الحساب
     delete_account_html: إن كنت ترغب في حذف حسابك يُمكنك <a href="%{path}">المواصلة هنا</a>. سوف يُطلَبُ منك التأكيد قبل الحذف.
@@ -1177,6 +1180,7 @@ ar:
       functional: حسابك يعمل بشكل كامل.
       pending: إن طلبك قيد المراجعة من قبل فريقنا. قد يستغرق هذا بعض الوقت. سوف تتلقى بريدا إلكترونيا إذا تمت الموافقة على طلبك.
       redirecting_to: حسابك غير نشط لأنه تم تحويله حاليا إلى %{acct}.
+      self_destruct: نظرًا لإغلاق %{domain}، ستحصل فقط على وصول محدود إلى حسابك.
       view_strikes: عرض العقوبات السابقة المُطَبَّقة ضد حسابك
     too_fast: تم إرسال النموذج بسرعة كبيرة، حاول مرة أخرى.
     use_security_key: استخدام مفتاح الأمان
@@ -1441,6 +1445,7 @@ ar:
       '86400': يوم واحد
     expires_in_prompt: أبدا
     generate: توليد
+    invalid: هذه الدعوة غير صالحة
     invited_by: 'تمت دعوتك من طرف:'
     max_uses:
       few: "%{count} استخدامات"
@@ -1622,6 +1627,9 @@ ar:
     errors:
       limit_reached: تم بلوغ الحد الأقصى لردود الفعل المختلفة
       unrecognized_emoji: لم يتم التعرف على أنه إيموجي
+  redirects:
+    prompt: إن كنت واثق من هذا الرابط، انقر عليه للمتابعة.
+    title: إنّك مغادر %{instance}.
   relationships:
     activity: نشاط الحساب
     confirm_follow_selected_followers: هل أنت متأكد من أنك تريد متابعة المتابِعين المحددين؟
@@ -1657,6 +1665,9 @@ ar:
     over_daily_limit: لقد تجاوزتَ حد الـ %{limit} منشورات مُبَرمَجة مسموح بها اليوم
     over_total_limit: لقد بلغت حد الـ %{limit} مِن المنشورات المبرمَجة
     too_soon: يجب أن يكون تاريخ البرمجة في المستقبَل
+  self_destruct:
+    lead_html: للأسف، سيتم إغلاق <strong>%{domain}</strong> بشكل دائم. إذا كان لديك حساب هناك، لن تكون قادرًا على الاستمرار في استخدامه، غير أنه يمكنك طلب نسخة احتياطية لبياناتك.
+    title: سيُغلق هذا الخادم أبوابه
   sessions:
     activity: آخر نشاط
     browser: المتصفح
@@ -1681,6 +1692,7 @@ ar:
       unknown_browser: متصفح غير معروف
       weibo: وايبو
     current_session: الجلسة الحالية
+    date: التاريخ
     description: "%{browser} على %{platform}"
     explanation: ها هي قائمة مُتصفِّحات الويب التي تستخدِم حاليًا حساب ماستدون الخاص بك.
     ip: عنوان الإيبي
@@ -1871,16 +1883,26 @@ ar:
     webauthn: مفاتيح الأمان
   user_mailer:
     appeal_approved:
+      action: إعدادات الحساب
       explanation: تمت الموافقة على استئناف السجل ضد حسابك في %{strike_date} الذي قدمته في %{appeal_date}. حسابك مرة أخرى في حالة جيدة.
       subject: تم قبول طعنك الذي قدمته بتاريخ %{date}
+      subtitle: حسابك في وضع جيد مجدّدا.
       title: تم قبول طعنك
     appeal_rejected:
       explanation: تم رفض استئناف السجل ضد حسابك في %{strike_date} الذي قدمته في %{appeal_date}.
       subject: تم رفض طعنك الذي قدمته بتاريخ %{date}
+      subtitle: تم رفض طعنك.
       title: رُفض الاستئناف
     backup_ready:
+      explanation: لقد قمت بطلب نسخة كاملة لحسابك على ماستدون.
+      extra: إنه الآن جاهز للتحميل!
       subject: نسخة بيانات حسابك جاهزة للتنزيل
       title: المغادرة بأرشيف الحساب
+    failed_2fa:
+      details: 'فيما يلي تفاصيل محاولة تسجيل الدخول:'
+      explanation: حاول شخص ما تسجيل الدخول إلى حسابك ولكنه قدم عامل مصادقة ثانٍ غير صالح.
+      subject: فشل المصادقة على العامل الثاني
+      title: فشل المصادقة على العامل الثاني
     suspicious_sign_in:
       change_password: غيّر كلمتك السرية
       details: 'فيما يلي تفاصيل تسجيل الدخول:'
@@ -1934,7 +1956,7 @@ ar:
     go_to_sso_account_settings: انتقل إلى إعدادات حساب مزود الهوية الخاص بك
     invalid_otp_token: رمز المصادقة بخطوتين غير صالح
     otp_lost_help_html: إن فقدتَهُما ، يمكنك الاتصال بـ %{email}
-    rate_limited: عدد محاولات التحقق كثير جدًا، يرجى المحاولة مرة أخرى لاحقًا.
+    rate_limited: عدد محاولات المصادقة كثير جداً، حاول مرة أخرى لاحقاً.
     seamless_external_login: لقد قمت بتسجيل الدخول عبر خدمة خارجية، إنّ إعدادات الكلمة السرية و البريد الإلكتروني غير متوفرة.
     signed_in_as: 'تم تسجيل دخولك بصفة:'
   verification:
