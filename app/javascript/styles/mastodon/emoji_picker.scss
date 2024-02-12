@@ -28,7 +28,8 @@
     border-top-width: 1px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    display: none;
+
+    // display: none;
   }
 }
 
@@ -257,5 +258,8 @@
 }
 
 .emoji-mart-preview {
-  display: none;
+  // display: none;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
